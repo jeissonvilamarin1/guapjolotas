@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-// import AppRouters from './routers/AppRouters';
+import { AppRouter } from './routers/AppRouter';
 import './styles/index.css';
-
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
-    <App />,
+    <AppRouter />,
   document.getElementById('root')
 );
