@@ -38,7 +38,6 @@ export const AppRouter = () => {
             element={
               <Detail
                 productos={productos}
-                /* agregarProductoAlCarrito={agregarProductoAlCarrito} */
                 carrito={carrito}
                 setCarrito={setCarrito}
               />

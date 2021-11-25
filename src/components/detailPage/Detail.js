@@ -13,8 +13,7 @@ import { DetailCombo } from './DetailCombo';
 import { DetailCounter } from './DetailCounter';
 import { DetailFlavor } from './DetailFlavor';
 
-export const Detail = ({ productos, agregarProductoAlCarrito, carrito, setCarrito }) => {
-  // const navegar = useNavigate()
+export const Detail = ({ productos, carrito, setCarrito }) => {
 
   const params = useParams();
   const { id } = params;

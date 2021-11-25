@@ -5,7 +5,7 @@ import { SearchBar } from "../SearchBar";
 import { Navbar } from "../Navbar";
 
 
-export const Container = ({productos, setProductos}) => {
+export const Container = ({productos}) => {
 
     return (
       <>

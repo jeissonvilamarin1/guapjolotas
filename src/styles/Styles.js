@@ -73,6 +73,7 @@ export const Product = styled.div`
   border-radius: 20px;
   margin-bottom: 10px;
   cursor: pointer;
+  text-decoration: none;
 `;
 export const SingleProduct = styled.div`
   display: block;
