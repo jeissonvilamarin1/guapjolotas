@@ -46,7 +46,7 @@ export const SearchPage = ({productos}) => {
           </SearchContainer>
           <Products>
             {searchedValue.map((p) => (
-            <Link to={`/producto/${p.id}`}>
+            <Link className="link" to={`/producto/${p.id}`}>
               <Product id={p.id} key={p.id}>
                 <Image src={p.imagen} alt={p.nombre} id={p.id} />
                 <ProductInfo>
