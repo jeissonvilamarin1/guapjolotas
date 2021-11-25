@@ -5,37 +5,51 @@ import {
   SingleProductName,
   SingleProductPrice,
   SingleProduct,
-  ButtonQuantity,
-  QuantityContainer,
-  Quantity,
+  DivSingleProduct,
+  AddToCartBtn,
 } from "../../styles/Styles";
+import { NavbarDetail } from '../NavbarDetail';
+import { DetailCombo } from './DetailCombo';
+import { DetailCounter } from './DetailCounter';
+import { DetailFlavor } from './DetailFlavor';
 
-export const Detail = ({detalle}) => {
+export const Detail = ({ productos, agregarProductoAlCarrito, carrito, setCarrito }) => {
+  // const navegar = useNavigate()
 
-    // const navegar = useNavigate()
+  const params = useParams();
+  const { id } = params;
 
-    const params = useParams();
-    const {id} = params;
+  const buscado = productos.find((p) => p.id === Number(id));
+  console.log(buscado);
 
-    const buscado = detalle.find(p => p.id === Number(id));
-    console.log(buscado)
 
-    return (
-      <div>
+
+  return (
+    <>
+      <NavbarDetail />
+      <DivSingleProduct className="animate__animated animate__bounceInRight">
         <div>
           <SingleProduct id={buscado.id} key={buscado.id}>
-            <SingleImage src={buscado.imagen} alt={buscado.nombre} id={buscado.id} />
-              <SingleProductName id={buscado.id}>{buscado.nombre}</SingleProductName>
-              <SingleProductPrice>$ {buscado.precio} MXN</SingleProductPrice>
+            <SingleImage
+              src={buscado.imagen}
+              alt={buscado.nombre}
+              id={buscado.id}
+            />
+            <SingleProductName id={buscado.id}>
+              {buscado.nombre}
+            </SingleProductName>
+            <SingleProductPrice>$ {buscado.precio} MXN</SingleProductPrice>
           </SingleProduct>
         </div>
-        <div>
-          <QuantityContainer>
-              <ButtonQuantity>-</ButtonQuantity>
-              <Quantity>1</Quantity>
-              <ButtonQuantity>+</ButtonQuantity>
-          </QuantityContainer>
-        </div>
-      </div>
-    );
-}
+        <DetailCounter cantidad={buscado.cantidad} carrito={carrito}/>
+        <DetailFlavor productos={productos} />
+        <DetailCombo productos={productos} />
+        <AddToCartBtn
+          onClick={() => setCarrito([...carrito, buscado])}
+        >
+          Agregar al carrito
+        </AddToCartBtn>
+      </DivSingleProduct>
+    </>
+  );
+};

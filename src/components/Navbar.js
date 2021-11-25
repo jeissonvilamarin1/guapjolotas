@@ -1,10 +1,9 @@
-
 import React from 'react'
 import styled  from 'styled-components'
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import '../styles/navbar.css'
 
-const Navbar = () => {
+export const Navbar = () => {
     const Image = styled.img`
         width: 64px;
         height: 64px;

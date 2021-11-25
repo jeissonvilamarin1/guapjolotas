@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CategoriesContainer, Button } from "../styles/Styles";
 import {
@@ -9,7 +9,6 @@ import {
   ProductPrice,
   Products,
 } from "../styles/Styles";
-
 
 
 export const Categories = ({productos}) => {
