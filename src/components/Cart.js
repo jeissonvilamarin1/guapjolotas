@@ -3,10 +3,10 @@ import { CartProduct, Products, CartImage, CartProductInfo, CartProductName, Car
 import { NavbarDetail } from "./NavbarDetail";
 
 export const Cart = ({ carrito }) => {
-  const suma = carrito.map(p =>(
-    p.cantidad
-  ))
-  console.log(suma)
+  
+  let total = (carrito).reduce(
+    (acc, { precio }) => acc + Number(precio), 0
+  );
 
   return (
     <div>
@@ -25,7 +25,7 @@ export const Cart = ({ carrito }) => {
               ))}
               <CartTotal>
                 <CartTotalText>Total</CartTotalText>
-                <CartTotalNumber>$62 MXN</CartTotalNumber>
+                <CartTotalNumber>{`$ ${total} MXN`}</CartTotalNumber>
               </CartTotal>
             </Products>
         ) 
