@@ -437,3 +437,9 @@ export const CartTitle = styled.h2`
   font-weight: 600;
   text-align: center;
 `;
+
+export const ComboCheckbox = styled.input`
+  position: absolute;
+  right: 20px;
+  top: 20px;
+`

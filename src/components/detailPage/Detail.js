@@ -39,10 +39,11 @@ export const Detail = ({ productos, carrito, agregarProductoAlCarrito }) => {
         </div>
         <DetailCounter buscado={buscado} carrito={carrito} />
         <DetailFlavor productos={productos} />
-        <DetailCombo productos={productos} />
-        <AddToCartBtn
-          onClick={() => agregarProductoAlCarrito(buscado.id)}
-        >
+        <DetailCombo
+          productos={productos}
+          agregarProductoAlCarrito={agregarProductoAlCarrito}
+        />
+        <AddToCartBtn onClick={() => agregarProductoAlCarrito(buscado.id)}>
           Agregar al carrito
         </AddToCartBtn>
       </DivSingleProduct>
