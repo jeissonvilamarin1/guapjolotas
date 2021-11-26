@@ -10,24 +10,56 @@ import { Cart } from '../components/Cart';
 export const AppRouter = () => {
   const [productos, setProductos] = useState([]);
 
+  const getData = () => {
+    axios.get(url)
+    .then((response) => setProductos(response.data))
+    .catch((error) => console.log(error));
+  
+  };
+  
   useEffect(() => {
     getData();
   }, []);
 
-  const getData = () => {
-    axios.get(url)
-         .then((response) => setProductos(response.data))
-         .catch((error) => console.log(error));
-  };
-  
-  localStorage.setItem("carrito", JSON.stringify([])); 
+const [carrito, cambiarCarrito] = useState([]);
+
+const agregarProductoAlCarrito = (idProductoAAgregar) => {
+
+  const buscado = productos.find(p => p.id === idProductoAAgregar)
+  if (carrito.length === 0) {
+    cambiarCarrito([buscado]);
+    console.log(carrito)
+  } 
+  else {
+    const nuevoCarrito = [...carrito];
+
+    const yaEstaEnCarrito =nuevoCarrito.filter((productoDeCarrito) => {
+        return productoDeCarrito.id === idProductoAAgregar;
+    }).length > 0;
+
+    if (yaEstaEnCarrito) {
+      nuevoCarrito.forEach((productoDeCarrito, index) => {
+        if (productoDeCarrito.id === idProductoAAgregar) {
+          buscado.cantidad = buscado.cantidad + 1;
+        }
+      });
+
+    } else {
+      nuevoCarrito.push(buscado);
+    }
+
+    cambiarCarrito(nuevoCarrito);
+  }
+};
+
+/*   localStorage.setItem("carrito", JSON.stringify([])); 
 
   const [carrito, setCarrito] = useState(
     JSON.parse(localStorage.getItem("carrito"))
   );
 
   localStorage.setItem("carrito", JSON.stringify(carrito));
-
+ */
   return (
     <div>
       <BrowserRouter>
@@ -39,7 +71,7 @@ export const AppRouter = () => {
               <Detail
                 productos={productos}
                 carrito={carrito}
-                setCarrito={setCarrito}
+                agregarProductoAlCarrito={agregarProductoAlCarrito}
               />
             }
           />
@@ -49,7 +81,7 @@ export const AppRouter = () => {
           />
           <Route
             path="/cart"
-            element={<Cart carrito={carrito} setCarrito={setCarrito} />}
+            element={<Cart carrito={carrito} />}
           />
         </Routes>
       </BrowserRouter>

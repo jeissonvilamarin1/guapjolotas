@@ -1,11 +1,14 @@
 import React from 'react'
 import { useParams } from "react-router";
+import { Link } from 'react-router-dom';
 import {
   ContainerDiv,
   FlavorContainer,
   FlavorImg,
   FlavorTitle,
 } from "../../styles/Styles";
+
+
 export const DetailFlavor = ({productos}) => {
     
     const params = useParams();
@@ -19,7 +22,9 @@ export const DetailFlavor = ({productos}) => {
         <FlavorContainer>
         <FlavorTitle>Sabor</FlavorTitle>
           {rebuscado.map((p) => (
+            <Link className="link" to={`/producto/${p.id}`}>
             <FlavorImg src={p.saborUrl} alt={p.sabor} key={p.id} />
+            </Link>
           ))}
         </FlavorContainer>
       </ContainerDiv>

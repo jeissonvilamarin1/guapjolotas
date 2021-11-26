@@ -13,15 +13,12 @@ import { DetailCombo } from './DetailCombo';
 import { DetailCounter } from './DetailCounter';
 import { DetailFlavor } from './DetailFlavor';
 
-export const Detail = ({ productos, carrito, setCarrito }) => {
-
+export const Detail = ({ productos, carrito, agregarProductoAlCarrito }) => {
   const params = useParams();
   const { id } = params;
 
   const buscado = productos.find((p) => p.id === Number(id));
   console.log(buscado);
-
-
 
   return (
     <>
@@ -40,11 +37,11 @@ export const Detail = ({ productos, carrito, setCarrito }) => {
             <SingleProductPrice>$ {buscado.precio} MXN</SingleProductPrice>
           </SingleProduct>
         </div>
-        <DetailCounter cantidad={buscado.cantidad} carrito={carrito}/>
+        <DetailCounter buscado={buscado} carrito={carrito} />
         <DetailFlavor productos={productos} />
         <DetailCombo productos={productos} />
         <AddToCartBtn
-          onClick={() => setCarrito([...carrito, buscado])}
+          onClick={() => agregarProductoAlCarrito(buscado.id)}
         >
           Agregar al carrito
         </AddToCartBtn>

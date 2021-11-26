@@ -373,6 +373,13 @@ export const CartProductName = styled.h3`
   width: auto;
 
 `;
+export const CartProductQuantity = styled.h3`
+  font-size: 13px;
+  font-weight: 900;
+  color: #fa4a0c;
+  display: block;
+  width: auto;
+`;
 
 
 export const CartProductPrice = styled.h3`

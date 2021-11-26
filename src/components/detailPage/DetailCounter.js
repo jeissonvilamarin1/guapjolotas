@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { ButtonQuantity, Quantity, QuantityContainer } from '../../styles/Styles';
 
-export const DetailCounter = (carrito) => {
+export const DetailCounter = ({carrito, buscado}) => {
+ 
 
     const [count, setCount] = useState(1)
 
@@ -12,7 +13,8 @@ export const DetailCounter = (carrito) => {
     const handleSub = () => {
         setCount(count - 1)
     }
-    
+    buscado.cantidad = count
+    console.log(buscado)
     return (
       <>
         <QuantityContainer>
