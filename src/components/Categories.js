@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CategoriesContainer, Button } from "../styles/Styles";
 import {
@@ -15,7 +15,11 @@ export const Categories = ({productos}) => {
 
   let filter = productos
 
-  const [state, setState] = useState(filter);
+  const [state, setState] = useState(productos);
+
+  useEffect(() => {
+    setState(productos)
+  }, [productos])
 
   const handleClick = (e) =>{
     filter = productos.filter(p =>p.categoria === e.target.id)
